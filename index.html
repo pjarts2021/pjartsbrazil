@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PJ ARTS — CGI · AI Filmmaking · VFX · Web 3D</title>
+<meta name="description" content="PJ ARTS — cinematic CGI, AI filmmaking, VFX and interactive Web 3D. Clio Entertainment 2025 Grand Award winner — Netflix “Body Swap”.">
+<link rel="icon" href="media/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="media/icon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="media/icon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="media/icon-180.png">
+<meta name="theme-color" content="#050505">
+<link rel="canonical" href="https://pjartsbrazil.com/">
+<meta name="robots" content="index,follow">
+<meta name="author" content="PJ ARTS">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="PJ ARTS">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="pt_BR">
+<meta property="og:url" content="https://pjartsbrazil.com/">
+<meta property="og:title" content="PJ ARTS — Cinematic CGI · AI Filmmaking · VFX · Web 3D">
+<meta property="og:description" content="Estúdio híbrido de CGI cinematográfico, IA generativa e Web 3D em tempo real. Clio Awards Grand Prix e 2× Bronze em Cannes Lions — Netflix “Body Swap”.">
+<meta property="og:image" content="https://pjartsbrazil.com/media/og-cover.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="PJ ARTS — award-winning CGI and AI film studio">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="PJ ARTS — Cinematic CGI · AI Filmmaking · VFX · Web 3D">
+<meta name="twitter:description" content="Clio Awards Grand Prix · 2× Bronze Cannes Lions — Netflix “Body Swap”. CGI, IA e Web 3D.">
+<meta name="twitter:image" content="https://pjartsbrazil.com/media/og-cover.jpg">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Organization","name":"PJ ARTS",
+"url":"https://pjartsbrazil.com/","logo":"https://pjartsbrazil.com/media/icon-512.png",
+"image":"https://pjartsbrazil.com/media/og-cover.jpg",
+"description":"Estúdio de CGI cinematográfico, AI filmmaking, VFX e Web 3D.",
+"email":"pj.nascimento.2013@hotmail.com","telephone":"+5516988087556",
+"address":{"@type":"PostalAddress","addressCountry":"BR"},
+"sameAs":["https://www.behance.net/pjarts","https://instagram.com/pjartsbrazil","https://vimeo.com/1061099584"],
+"award":["Clio Awards Grand Prix 2025 — Netflix Body Swap","2× Bronze Cannes Lions 2025 — Netflix Body Swap"]}
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#050505;--pane:#0b0b0b;--ink:#fff;--dim:#8a8a8a;--faint:#5a5a5a;
+  --line:rgba(255,255,255,.13);--pad:clamp(18px,3.4vw,52px);--e:cubic-bezier(.16,1,.3,1)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:'Archivo','Arial Black',system-ui,sans-serif;
+  font-weight:400;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body.lock{overflow:hidden}
+::selection{background:#fff;color:#000}
+a{color:inherit;text-decoration:none}
+img,video{display:block;max-width:100%}
+.tag{font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--dim)}
+.display{font-weight:900;text-transform:uppercase;line-height:.85;letter-spacing:-.045em}
+.d-xl{font-size:clamp(46px,11.6vw,190px)}
+.d-lg{font-size:clamp(34px,7.2vw,118px)}
+.d-md{font-size:clamp(26px,4.2vw,64px)}
+.inv{background:#fff;color:#000;padding:0 .16em;display:inline-block}
+.outline{-webkit-text-stroke:1.4px rgba(255,255,255,.55);color:transparent}
+
+#pre{position:fixed;inset:0;z-index:300;background:#050505;display:grid;place-items:center;
+  transition:opacity 1s var(--e),visibility 1s}
+#pre.gone{opacity:0;visibility:hidden}
+#pre .pin{text-align:center;opacity:0;transform:scale(.96);
+  transition:opacity 1.1s var(--e),transform 1.6s var(--e)}
+#pre.show .pin{opacity:1;transform:scale(1)}
+#pre.out .pin{opacity:0;transform:scale(1.06)}
+#pre img{width:min(280px,58vw);height:auto}
+
+header.top{position:fixed;top:0;left:0;right:0;z-index:150;display:flex;align-items:center;
+  justify-content:space-between;padding:18px var(--pad);transition:.5s var(--e)}
+header.top.solid{background:rgba(5,5,5,.82);backdrop-filter:blur(16px);border-bottom:1px solid var(--line);padding:12px var(--pad)}
+.logo img{height:34px;width:auto}
+.top .right{display:flex;align-items:center;gap:24px}
+.top a.mini{font-size:10.5px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  border:1px solid var(--line);padding:10px 16px;border-radius:100px;transition:.4s var(--e)}
+.top a.mini:hover{background:#fff;color:#000;border-color:#fff}
+.burger{width:34px;height:14px;position:relative;cursor:pointer;background:none;border:0}
+.burger span{position:absolute;left:0;right:0;height:2px;background:#fff;transition:.5s var(--e)}
+.burger span:nth-child(1){top:0}.burger span:nth-child(2){bottom:0}
+body.menu .burger span:nth-child(1){top:6px;transform:rotate(45deg)}
+body.menu .burger span:nth-child(2){bottom:6px;transform:rotate(-45deg)}
+@media(max-width:600px){.top a.mini{display:none}}
+
+#menu{position:fixed;inset:0;z-index:140;background:#080808;display:flex;flex-direction:column;
+  justify-content:center;padding:0 var(--pad);clip-path:inset(0 0 100% 0);transition:clip-path .9s var(--e)}
+body.menu #menu{clip-path:inset(0 0 0 0)}
+#menu a.big{display:block;font-weight:900;text-transform:uppercase;letter-spacing:-.04em;
+  font-size:clamp(30px,6.6vw,88px);line-height:1.04;opacity:0;transform:translateY(28px);
+  transition:opacity .6s var(--e),transform .6s var(--e),color .3s}
+body.menu #menu a.big{opacity:1;transform:none}
+#menu a.big:hover{color:var(--faint)}
+#menu .foot{margin-top:40px;display:flex;gap:24px;flex-wrap:wrap}
+#menu .foot a{font-size:10.5px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--dim)}
+#menu .foot a:hover{color:#fff}
+
+.hero{position:relative;height:100svh;overflow:hidden;background:#000}
+.hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero .shade{position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(5,5,5,.6),rgba(5,5,5,.05) 28%,rgba(5,5,5,.2) 55%,rgba(5,5,5,.96))}
+.hero .btm{position:absolute;left:0;right:0;bottom:0;padding:0 var(--pad) clamp(20px,4vh,44px)}
+.kicker{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+.kicker b{font-size:9.5px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;
+  border:1px solid var(--line);padding:7px 13px;border-radius:100px;color:var(--dim)}
+.kicker b.on{background:#fff;border-color:#fff;color:#000}
+.hero h1{font-size:clamp(42px,11vw,180px)}
+.hero .row{margin-top:20px;display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap}
+.hero .row p{max-width:430px;font-size:13.5px;line-height:1.65;color:#c4c4c4}
+.ctrl{display:flex;gap:9px}
+.ctrl button{width:46px;height:46px;border-radius:50%;border:1px solid var(--line);background:rgba(0,0,0,.4);
+  backdrop-filter:blur(8px);cursor:pointer;display:grid;place-items:center;transition:.4s var(--e)}
+.ctrl button:hover{background:#fff}.ctrl button:hover svg{fill:#000}
+.ctrl svg{width:15px;height:15px;fill:#fff;transition:fill .4s}
+
+.mq{border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;padding:15px 0}
+.mq .t{display:flex;gap:48px;width:max-content;animation:slide 40s linear infinite;white-space:nowrap}
+.mq span{font-weight:800;font-size:clamp(14px,1.9vw,24px);text-transform:uppercase;letter-spacing:-.02em;color:var(--dim)}
+.mq span::after{content:"/";margin-left:48px;color:var(--faint)}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+.head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;
+  padding:clamp(60px,8.5vw,124px) var(--pad) clamp(24px,3vw,44px)}
+.head p{max-width:420px;font-size:13.5px;line-height:1.7;color:var(--dim)}
+.rv{opacity:0;transform:translateY(32px);transition:opacity .9s var(--e),transform .9s var(--e)}
+.rv.in{opacity:1;transform:none}
+
+/* ---- FEATURED grid: 16:9 e 9:16 responsivos ---- */
+.feat{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(6px,.9vw,14px);
+  padding:0 var(--pad);align-items:start}
+.s12{grid-column:span 12}.s6{grid-column:span 6}.s4{grid-column:span 4}
+.fcard.h{aspect-ratio:16/9}
+.fcard.v{aspect-ratio:9/16}
+
+/* tablet paisagem: horizontais em largura cheia, verticais 3 por linha */
+@media(max-width:1100px){
+  .s12{grid-column:span 12}
+}
+/* tablet retrato: horizontais cheios, verticais 2 por linha */
+@media(max-width:900px){
+  .s6,.s12{grid-column:span 12}
+  .s4{grid-column:span 4}          /* os 3 verticais seguem juntos na mesma linha */
+  .fcard.v{aspect-ratio:9/16;max-height:74vh}
+  .fcard.v h3{font-size:clamp(13px,2.6vw,20px)}
+  .fcard.v .cap{padding:12px 12px}
+  .fcard.v .yr{font-size:8.5px;letter-spacing:.14em}
+}
+/* celular: tudo em coluna, vertical limitado pela altura da tela */
+@media(max-width:620px){
+  .s4,.s6,.s12{grid-column:span 12}
+  .fcard.h{aspect-ratio:16/9}
+  .fcard.v{aspect-ratio:9/16;max-height:78vh}
+  .fcard .cap{padding:16px 16px}
+  .fcard.v .cap{gap:8px}
+  .fcard h3{font-size:clamp(19px,5.6vw,30px)}
+  .fcard.v h3{font-size:clamp(19px,5.6vw,28px)}
+  .fcard .yr{font-size:9px;letter-spacing:.16em}
+  .fcard .play{width:60px;height:60px}
+  .fcard .play svg{width:17px;height:17px}
+  .fcard .hint{display:none}
+}
+/* telas baixas e largas: nao deixa o vertical estourar */
+@media(max-height:560px) and (min-width:901px){
+  .fcard.v{max-height:88vh}
+}
+.fcard{position:relative;overflow:hidden;background:#000;cursor:pointer}
+.fcard video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  transition:transform 1.3s var(--e);filter:saturate(.95)}
+.fcard:hover video{transform:scale(1.05)}
+.fcard .grad{position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.88),transparent 52%);
+  opacity:.92;transition:opacity .5s}
+.fcard:hover .grad{opacity:1}
+.fcard .cap{position:absolute;left:0;right:0;bottom:0;padding:20px 22px;z-index:2;
+  display:flex;justify-content:space-between;align-items:flex-end;gap:12px}
+.fcard.v .cap{flex-direction:column;align-items:flex-start;gap:10px}
+.fcard h3{font-weight:900;text-transform:uppercase;letter-spacing:-.035em;
+  font-size:clamp(17px,2.1vw,36px);line-height:.92}
+.fcard.v h3{font-size:clamp(16px,1.5vw,24px)}
+.fcard .yr{font-size:9.5px;font-weight:700;letter-spacing:.18em;color:#cfcfcf;text-align:right;line-height:1.9}
+.fcard.v .yr{text-align:left}
+.fcard .play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) scale(.8);z-index:2;
+  width:74px;height:74px;border-radius:50%;border:1px solid rgba(255,255,255,.6);display:grid;place-items:center;
+  opacity:0;transition:.55s var(--e);background:rgba(0,0,0,.25);backdrop-filter:blur(5px)}
+.fcard:hover .play{opacity:1;transform:translate(-50%,-50%) scale(1)}
+.fcard .play svg{width:20px;height:20px;fill:#fff;margin-left:4px}
+.fcard .live{position:absolute;top:16px;left:18px;z-index:2;font-size:8.5px;font-weight:800;letter-spacing:.24em;
+  text-transform:uppercase;color:#fff;display:flex;align-items:center;gap:7px}
+.fcard .live::before{content:"";width:6px;height:6px;border-radius:50%;background:#fff;animation:bl 1.8s infinite}
+@keyframes bl{50%{opacity:.2}}
+
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:2px;padding:0 var(--pad);background:transparent}
+.tile{position:relative;overflow:hidden;background:#000;cursor:pointer}
+.tile video{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--e)}
+.tile:hover video{transform:scale(1.05)}
+.tile .meta{position:absolute;left:0;right:0;bottom:0;padding:18px;z-index:2;
+  background:linear-gradient(0deg,rgba(0,0,0,.9),transparent);display:flex;justify-content:space-between;
+  align-items:flex-end;gap:12px}
+.tile .meta h3{font-weight:900;text-transform:uppercase;letter-spacing:-.03em;font-size:clamp(15px,1.6vw,24px);line-height:.96}
+.tile .meta .tag{text-align:right;color:#b6b6b6}
+.c12{grid-column:span 12}.c8{grid-column:span 8}.c6{grid-column:span 6}.c4{grid-column:span 4}
+.r16{aspect-ratio:16/9}.r43{aspect-ratio:4/3}.r34{aspect-ratio:3/4}
+@media(max-width:860px){.c8,.c6,.c4{grid-column:span 12}.r34,.r43{aspect-ratio:16/9}}
+
+#lb{position:fixed;inset:0;z-index:250;background:rgba(3,3,3,.97);backdrop-filter:blur(14px);
+  display:flex;flex-direction:column;opacity:0;visibility:hidden;transition:.5s var(--e)}
+#lb.on{opacity:1;visibility:visible}
+#lb .bar{display:flex;justify-content:space-between;align-items:center;padding:16px var(--pad);
+  border-bottom:1px solid var(--line);gap:16px}
+#lb .bar h4{font-weight:900;text-transform:uppercase;letter-spacing:-.02em;font-size:clamp(15px,2vw,26px)}
+#lb .x{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:none;cursor:pointer;
+  display:grid;place-items:center;flex:none;transition:.4s}
+#lb .x:hover{background:#fff}#lb .x:hover svg{fill:#000}
+#lb .x svg{width:15px;height:15px;fill:#fff;transition:fill .4s}
+#lb .body{flex:1;overflow-y:auto;padding:clamp(16px,2.4vw,32px) var(--pad) 60px}
+#lb .player{width:100%;max-width:1500px;margin:0 auto;aspect-ratio:16/9;background:#000;border:1px solid var(--line);transition:aspect-ratio .4s,max-width .4s}
+#lb .player.vert{aspect-ratio:9/16;max-width:min(46vh,420px)}
+#lb .player video{width:100%;height:100%;object-fit:contain;background:#000}
+#lb .txt{display:grid;grid-template-columns:1.2fr 1fr;gap:clamp(24px,4vw,64px);margin-top:clamp(26px,3.4vw,50px)}
+@media(max-width:860px){#lb .txt{grid-template-columns:1fr}}
+#lb #lbDesc p{font-size:15px;line-height:1.75;color:#cacaca;max-width:640px}
+#lb #lbDesc p+p{margin-top:16px}
+#lb .cr{border-top:1px solid var(--line)}
+#lb .cr div{display:grid;grid-template-columns:150px 1fr;gap:16px;padding:11px 0;border-bottom:1px solid var(--line);font-size:12.5px;line-height:1.6}
+#lb .cr b{font-weight:700;letter-spacing:.1em;text-transform:uppercase;font-size:10px;color:var(--faint);padding-top:3px}
+#lb .cr span{color:#d2d2d2}
+#lb .chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:22px}
+#lb .chips i{font-style:normal;font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  border:1px solid var(--line);padding:8px 13px;border-radius:100px;color:var(--dim)}
+
+.bleed{position:relative;min-height:clamp(560px,92svh,900px);overflow:hidden;margin-top:clamp(60px,8.5vw,124px);
+  display:flex;align-items:center}
+.bleed>video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.3;filter:grayscale(.35)}
+.bleed .sh{position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,5,5,.85),rgba(5,5,5,.45) 45%,rgba(5,5,5,.97))}
+.bleed .in{position:relative;z-index:2;width:100%;padding:clamp(60px,8vw,100px) var(--pad)}
+.badge{display:inline-flex;align-items:center;gap:10px;background:#fff;color:#000;font-size:10px;font-weight:800;
+  letter-spacing:.22em;text-transform:uppercase;padding:9px 15px;border-radius:100px;margin-bottom:24px}
+.badge::before{content:"";width:6px;height:6px;border-radius:50%;background:#000;animation:bl 1.9s infinite}
+.bleed p.sub{margin-top:26px;max-width:620px;font-size:14.5px;line-height:1.75;color:#c2c2c2}
+.bleed p.sub strong{color:#fff;font-weight:700}
+.awgrid{margin-top:32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(148px,1fr));max-width:800px;
+  border-top:1px solid var(--line);border-left:1px solid var(--line)}
+.awgrid .aw{border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:17px 15px;background:rgba(5,5,5,.5)}
+.awgrid b{display:block;font-size:10.5px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;margin-bottom:8px}
+.awgrid span{font-size:11px;line-height:1.6;color:#b8b8b8}
+.awlinks{margin-top:24px;display:flex;gap:22px;flex-wrap:wrap}
+.awlinks a{font-size:10.5px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;
+  border-bottom:1px solid #fff;padding-bottom:4px;transition:opacity .35s}
+.awlinks a:hover{opacity:.55}
+
+.rows{border-top:1px solid var(--line)}
+.row{position:relative;border-bottom:1px solid var(--line);padding:clamp(22px,3.2vw,40px) var(--pad);
+  display:grid;grid-template-columns:62px 1fr 1.15fr;gap:clamp(14px,3vw,44px);align-items:center;
+  transition:background .5s var(--e);overflow:hidden}
+.row:hover{background:#0a0a0a}
+.row .peek{position:absolute;right:var(--pad);top:50%;transform:translateY(-50%) scale(.9);width:min(30vw,320px);
+  aspect-ratio:16/9;opacity:0;transition:.7s var(--e);pointer-events:none;overflow:hidden}
+.row:hover .peek{opacity:.55;transform:translateY(-50%) scale(1)}
+.row .peek video{width:100%;height:100%;object-fit:cover}
+.row>*{position:relative;z-index:1}
+.row .n{font-size:10.5px;font-weight:800;letter-spacing:.2em;color:var(--faint)}
+.row h3{font-weight:900;text-transform:uppercase;letter-spacing:-.035em;font-size:clamp(22px,3.6vw,54px);line-height:.93}
+.row ul{list-style:none;display:flex;flex-wrap:wrap;gap:7px}
+.row li{font-size:10.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#adadad;
+  border:1px solid var(--line);padding:7px 12px;border-radius:100px}
+@media(max-width:860px){.row{grid-template-columns:1fr;gap:14px}.row .peek{display:none}}
+
+.split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,3vw,50px);padding:0 var(--pad);align-items:center}
+@media(max-width:860px){.split{grid-template-columns:1fr}}
+.split .vid{position:relative;aspect-ratio:4/3;overflow:hidden;background:#000}
+.split .vid video{width:100%;height:100%;object-fit:cover;opacity:.75;filter:grayscale(.3)}
+.split p{color:var(--dim);font-size:14.5px;line-height:1.8;margin-top:20px;max-width:520px}
+.bullets{list-style:none;margin-top:28px;border-top:1px solid var(--line)}
+.bullets li{display:flex;gap:16px;padding:16px 0;border-bottom:1px solid var(--line);font-size:13.5px;color:#c9c9c9}
+.bullets b{font-size:10px;font-weight:800;letter-spacing:.16em;min-width:24px;color:var(--faint);padding-top:3px}
+
+.stats{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);margin-top:clamp(60px,8.5vw,124px)}
+@media(max-width:860px){.stats{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.stats{grid-template-columns:1fr}}
+.stats .s{padding:clamp(28px,3.6vw,52px) var(--pad);border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+.stats .s:last-child{border-right:0}
+.stats .v{font-weight:900;text-transform:uppercase;letter-spacing:-.04em;line-height:.9;font-size:clamp(28px,4.2vw,58px)}
+.stats .l{margin-top:13px;font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--faint);line-height:1.8}
+
+#contact{position:relative;overflow:hidden;padding:clamp(70px,11vw,150px) 0 0}
+#contact .bgv{position:absolute;inset:0;z-index:0}
+#contact .bgv video{width:100%;height:100%;object-fit:cover;opacity:.16;filter:grayscale(.7)}
+#contact .bgv::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#050505,rgba(5,5,5,.72) 40%,#050505)}
+#contact .in{position:relative;z-index:1;padding:0 var(--pad)}
+.mailto{display:inline-block;margin-top:32px;font-weight:900;text-transform:uppercase;letter-spacing:-.03em;
+  font-size:clamp(18px,3.1vw,48px);border-bottom:2px solid #fff;padding-bottom:6px;transition:opacity .35s}
+.mailto:hover{opacity:.6}
+.clinks{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));border-top:1px solid var(--line);
+  margin-top:clamp(46px,6.4vw,86px);position:relative;z-index:1}
+.clinks a{padding:24px var(--pad) 24px 22px;border-bottom:1px solid var(--line);border-right:1px solid var(--line);transition:.45s var(--e)}
+.clinks a:hover{background:#fff;color:#000}
+.clinks small{display:block;font-size:9.5px;font-weight:800;letter-spacing:.24em;text-transform:uppercase;color:var(--faint);margin-bottom:10px}
+.clinks a:hover small{color:rgba(0,0,0,.55)}
+.clinks strong{font-weight:700;font-size:13.5px;word-break:break-word}
+footer{padding:24px var(--pad);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center;
+  font-size:9.5px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--faint);
+  border-top:1px solid var(--line);position:relative;z-index:1;background:#050505}
+footer img{height:26px}
+
+
+/* ---- overlay colorido + estado de hover ---- */
+.fcard .tint{position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:var(--tint,#fff);mix-blend-mode:color;opacity:.62;transition:opacity .7s var(--e)}
+.fcard::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:var(--tint,#fff);opacity:.14;mix-blend-mode:overlay;transition:opacity .7s var(--e)}
+.fcard:hover .tint{opacity:0}
+.fcard:hover::before{opacity:0}
+.fcard video{filter:grayscale(.35) contrast(1.05);transition:transform 1.3s var(--e),filter .8s var(--e)}
+.fcard:hover video{filter:none;transform:scale(1.04)}
+.fcard .hint{position:absolute;right:20px;top:16px;z-index:3;font-size:8.5px;font-weight:800;
+  letter-spacing:.24em;text-transform:uppercase;color:#fff;opacity:.55;transition:opacity .4s}
+.fcard:hover .hint{opacity:0}
+.fcard .live{opacity:0;transition:opacity .4s}
+.fcard:hover .live{opacity:1}
+/* ---- awards clean ---- */
+/* ---- banner de prêmios animado ---- */
+.awband{padding:0 var(--pad);perspective:1200px}
+.awclip{position:relative;overflow:hidden;border:1px solid var(--line);background:#000}
+
+.awclip img{width:100%;height:auto;display:block;will-change:transform,filter;
+  transform:scale(1.06);filter:brightness(0) saturate(0)}
+
+.awclip .sweep{position:absolute;top:0;bottom:0;width:45%;left:-60%;pointer-events:none;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.13),transparent);
+  transform:skewX(-14deg)}
+.awband.lit .awclip .sweep{animation:sweep 2.2s var(--e) both}
+@keyframes sweep{to{left:120%}}
+.awclip::after{content:"";position:absolute;inset:0;pointer-events:none;
+  box-shadow:inset 0 0 120px rgba(0,0,0,.65);opacity:1;transition:opacity .8s}
+.awband:hover .awclip::after{opacity:.35}
+.awband:hover .awclip img{filter:brightness(1.12) saturate(1.15)}
+
+.awrow{display:grid;grid-template-columns:repeat(4,1fr);margin-top:clamp(28px,3.5vw,50px);
+  border-top:1px solid var(--line)}
+@media(max-width:860px){.awrow{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.awrow{grid-template-columns:1fr}}
+.awcell{padding:clamp(24px,3vw,40px) var(--pad);border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+.awcell:last-child{border-right:0}
+.awcell b{display:block;font-weight:900;text-transform:uppercase;letter-spacing:-.03em;
+  font-size:clamp(22px,2.6vw,38px);line-height:.95}
+.awcell span{display:block;margin-top:12px;font-size:10.5px;font-weight:800;letter-spacing:.2em;
+  text-transform:uppercase;color:#fff}
+.awcell i{display:block;margin-top:7px;font-style:normal;font-size:10.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--faint)}
+
+/* ---- responsivo geral ---- */
+@media(max-width:620px){
+  .hero{height:100svh}
+  .hero h1{font-size:clamp(38px,13vw,64px)}
+  .hero .row{flex-direction:column;align-items:flex-start;gap:16px}
+  .hero .row p{max-width:100%;font-size:13px}
+  .ctrl{align-self:flex-end}
+  .kicker b{font-size:8.5px;padding:6px 10px;letter-spacing:.16em}
+  .head{flex-direction:column;align-items:flex-start;gap:14px}
+  .head p{max-width:100%}
+  .mq span{font-size:15px}
+  .mq .t{gap:30px}.mq span::after{margin-left:30px}
+  .awrow{grid-template-columns:1fr}
+  .awcell{padding:20px var(--pad)}
+  .awcell b{font-size:clamp(20px,7vw,30px)}
+  .awlinks{flex-direction:column;gap:12px}
+  .clinks{grid-template-columns:1fr}
+  .mailto{font-size:clamp(15px,5.2vw,24px);word-break:break-all}
+  footer{flex-direction:column;align-items:flex-start;gap:10px}
+  #menu a.big{font-size:clamp(28px,9vw,44px)}
+  .logo img{height:26px}
+}
+/* lightbox: adapta ao formato e a altura da tela */
+#lb .player{max-height:76vh}
+#lb .player.vert{aspect-ratio:9/16;max-width:min(44vh,400px);max-height:82vh}
+@media(max-width:620px){
+  #lb .bar h4{font-size:15px}
+  #lb .body{padding:12px var(--pad) 48px}
+  #lb .player.vert{max-width:100%;max-height:70vh}
+  #lb .txt{gap:22px}
+  #lb .cr div{grid-template-columns:1fr;gap:4px;padding:10px 0}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition-duration:.01ms!important}}
+</style>
+</head>
+<body>
+
+<div id="pre"><div class="pin"><img src="media/logo.png" alt="PJ ARTS"></div></div>
+
+<header class="top" id="top">
+  <a class="logo" href="#home"><img src="media/logo.png" alt="PJ ARTS"></a>
+  <div class="right">
+    <a class="mini" href="#contact">Start a project</a>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span></button>
+  </div>
+</header>
+
+<div id="menu">
+  <a class="big" href="#work">Home</a>
+  <a class="big" href="#iacases">IA Cases</a>
+  
+  <a class="big" href="#awards">Awards</a>
+  
+  <a class="big" href="#contact">Contact</a>
+  <div class="foot">
+    <a href="https://www.behance.net/pjarts" target="_blank" rel="noopener">Behance</a>
+    <a href="https://instagram.com/pjartsbrazil" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://vimeo.com/1061099584" target="_blank" rel="noopener">Vimeo</a>
+    <a href="https://wa.me/5516988087556" target="_blank" rel="noopener">WhatsApp</a>
+  </div>
+</div>
+
+<section class="hero" id="home">
+  <video id="heroV" autoplay muted loop playsinline src="media/reel.webm"></video>
+  <div class="shade"></div>
+  <div class="btm">
+    <div class="kicker"><b class="on">Reel 2025</b><b>CGI</b><b>AI Filmmaking</b><b>VFX</b><b>Web 3D</b></div>
+    <h1 class="display d-xl">Beyond<br><span class="outline">the</span><br>frame</h1>
+    <div class="row">
+      <p>Hybrid studio — cinematic CGI pipelines, generative AI and real-time web technology. For global brands and public innovation.</p>
+      <div class="ctrl">
+        <button id="mute" aria-label="Sound"><svg id="icMute" viewBox="0 0 24 24"><path d="M4 9v6h4l5 5V4L8 9H4zm15.5 3a4.5 4.5 0 00-2.5-4v8a4.5 4.5 0 002.5-4zM3 3l18 18-1.4 1.4L1.6 4.4 3 3z"/></svg></button>
+        <button id="pause" aria-label="Pause"><svg viewBox="0 0 24 24"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="mq"><div class="t" id="mq"></div></div>
+
+<section id="work">
+  <div class="head">
+    <h2 class="display d-lg rv">Home<br>projects</h2>
+    <p class="rv">Films running live. Click any frame to open the full piece with credits — the page stays where it is.</p>
+  </div>
+
+  <div class="feat">
+    <article style="--tint:#e50914" class="fcard s6 h" data-key="netflix" data-film="media/home/netflix.webm">
+      <video data-src="media/home/loop-netflix.webm" muted loop playsinline preload="none"></video>
+      <span class="tint"></span>
+      <div class="grad"></div><span class="live">Playing</span><span class="hint">Hover</span>
+      <div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      <div class="cap"><h3>Netflix<br>Body Swap</h3><div class="yr">2025<br>VFX · AI · Interactive<br>AKQA</div></div>
+    </article>
+    <article style="--tint:#e50914" class="fcard s6 h" data-key="bionicos" data-film="media/home/bionicos.webm">
+      <video data-src="media/home/loop-bionicos.webm" muted loop playsinline preload="none"></video>
+      <span class="tint"></span>
+      <div class="grad"></div><span class="live">Playing</span><span class="hint">Hover</span>
+      <div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      <div class="cap"><h3>Netflix<br>Biônicos</h3><div class="yr">2024<br>VFX · Trailer</div></div>
+    </article>
+    <article style="--tint:#1e88ff" class="fcard s6 h" data-key="kr6" data-film="media/home/kr6.webm">
+      <video data-src="media/home/loop-kr6.webm" muted loop playsinline preload="none"></video>
+      <span class="tint"></span>
+      <div class="grad"></div><span class="live">Playing</span><span class="hint">Hover</span>
+      <div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      <div class="cap"><h3>Fila Brazil<br>KR6</h3><div class="yr">2024<br>CGI · Product film<br>Studio Cosmo</div></div>
+    </article>
+    <article style="--tint:#00c9a7" class="fcard s6 h" data-key="verve" data-film="media/home/verve.webm">
+      <video data-src="media/home/loop-verve.webm" muted loop playsinline preload="none"></video>
+      <span class="tint"></span>
+      <div class="grad"></div><span class="live">Playing</span><span class="hint">Hover</span>
+      <div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      <div class="cap"><h3>Fila Brazil<br>Float Verve</h3><div class="yr">2023<br>CGI · Product film</div></div>
+    </article>
+    <article style="--tint:#ff7a1a" class="fcard s6 h" data-key="maxxi" data-film="media/home/maxxi.webm">
+      <video data-src="media/home/loop-maxxi.webm" muted loop playsinline preload="none"></video>
+      <span class="tint"></span>
+      <div class="grad"></div><span class="live">Playing</span><span class="hint">Hover</span>
+      <div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      <div class="cap"><h3>Fila Float<br>Maxxi 2 Pro</h3><div class="yr">2024<br>CGI · Product film</div></div>
+    </article>
+    <article style="--tint:#8bc34a" class="fcard s6 h" data-key="herbissimo" data-film="media/home/herbissimo.webm">
+      <video data-src="media/home/loop-herbissimo.webm" muted loop playsinline preload="none"></video>
+      <span class="tint"></span>
+      <div class="grad"></div><span class="live">Playing</span><span class="hint">Hover</span>
+      <div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      <div class="cap"><h3>Herbíssimo</h3><div class="yr">2024<br>CGI · Commercial</div></div>
+    </article>
+    <article style="--tint:#7c4dff" class="fcard s6 h" data-key="gtx" data-film="media/home/gtx.webm">
+      <video data-src="media/home/loop-gtx.webm" muted loop playsinline preload="none"></video>
+      <span class="tint"></span>
+      <div class="grad"></div><span class="live">Playing</span><span class="hint">Hover</span>
+      <div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      <div class="cap"><h3>GTX Sports<br>Experience</h3><div class="yr">2024<br>Web 3D · Configurator</div></div>
+    </article>
+    <article style="--tint:#12a05c" class="fcard s6 h" data-key="volvo" data-film="media/home/volvo.webm">
+      <video data-src="media/home/loop-volvo.webm" muted loop playsinline preload="none"></video>
+      <span class="tint"></span>
+      <div class="grad"></div><span class="live">Playing</span><span class="hint">Hover</span>
+      <div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      <div class="cap"><h3>Volvo ×<br>Grupo Tracbel</h3><div class="yr">2025<br>Web 3D · Real-time</div></div>
+    </article>
+    <article style="--tint:#0b63f6" class="fcard s4 v" data-key="williams" data-film="media/home/williams.webm">
+      <video data-src="media/home/loop-williams.webm" muted loop playsinline preload="none"></video>
+      <span class="tint"></span>
+      <div class="grad"></div><span class="live">Playing</span><span class="hint">Hover</span>
+      <div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      <div class="cap"><h3>Williams Racing<br>Gulf × Atlassian</h3><div class="yr">2025<br>CGI · Motorsport<br>9:16</div></div>
+    </article>
+    <article style="--tint:#f4d03f" class="fcard s4 v" data-key="penalty" data-film="media/home/penalty.webm">
+      <video data-src="media/home/loop-penalty.webm" muted loop playsinline preload="none"></video>
+      <span class="tint"></span>
+      <div class="grad"></div><span class="live">Playing</span><span class="hint">Hover</span>
+      <div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      <div class="cap"><h3>Penalty<br>Brasil 70 Pro</h3><div class="yr">2026<br>CGI · Product film<br>9:16</div></div>
+    </article>
+    <article style="--tint:#ff4fa3" class="fcard s4 v" data-key="shutz" data-film="media/home/shutz.webm">
+      <video data-src="media/home/loop-shutz.webm" muted loop playsinline preload="none"></video>
+      <span class="tint"></span>
+      <div class="grad"></div><span class="live">Playing</span><span class="hint">Hover</span>
+      <div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      <div class="cap"><h3>Schutz</h3><div class="yr">2024<br>CGI · Fashion<br>9:16</div></div>
+    </article>
+  </div>
+
+  </section>
+
+<section id="awards">
+  <div class="head">
+    <h2 class="display d-lg rv">Awards &amp;<br>recognition</h2>
+    <p class="rv">Netflix — “Body Swap” / <em>It’s What’s Inside: The Game</em>, by AKQA. Craft credit: Model &amp; Texture — Pablo Oliveira.</p>
+  </div>
+  <figure class="awband" id="awband">
+    <div class="awclip">
+      <img id="awimg" src="media/awards-banner.jpg" alt="PJ ARTS — Cannes Lions · Clio Awards · Behance Curated Gallery">
+      <span class="sweep"></span>
+    </div>
+  </figure>
+  <div class="awrow">
+    <div class="awcell rv"><b>Grand Prix</b><span>Clio Awards 2025</span><i>Netflix “Body Swap”</i></div>
+    <div class="awcell rv"><b>2× Bronze</b><span>Cannes Lions 2025</span><i>Netflix “Body Swap”</i></div>
+    <div class="awcell rv"><b>Specialty</b><span>Clio × Snapchat AR</span><i>Netflix “Body Swap”</i></div>
+    <div class="awcell rv"><b>Curated</b><span>Behance Gallery</span><i>Featured projects</i></div>
+  </div>
+  <div class="awlinks rv" style="padding:0 var(--pad);margin-top:clamp(28px,3.5vw,46px)">
+    <a href="https://clios.com/winners-gallery/details/194346" target="_blank" rel="noopener">Clio Awards · Grand Prix ↗</a>
+    <a href="https://www.perfectstormstudio.com/works-2/andre-bodyswap" target="_blank" rel="noopener">Cannes Lions · 2× Bronze ↗</a>
+  </div>
+</section>
+
+
+
+
+
+
+
+<!-- IA CASES -->
+<section id="iacases">
+  <div class="head">
+    <h2 class="display d-lg rv">IA<br>cases</h2>
+    <p class="rv">Generative AI film production — concept, direction and finishing, delivered in vertical formats for social.</p>
+  </div>
+  <div class="feat">
+    <article style="--tint:#c0392b" class="fcard s12 h" data-key="ironmike" data-film="media/ia/ironmike.webm">
+      <video data-src="media/ia/loop-ironmike.webm" muted loop playsinline preload="none"></video>
+      <span class="tint"></span>
+      <div class="grad"></div><span class="live">Playing</span><span class="hint">Hover</span>
+      <div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      <div class="cap"><h3>Iron Mike<br>Legacy</h3><div class="yr">2026<br>AI Filmmaking<br>16:9</div></div>
+    </article>
+    <article style="--tint:#ff8a00" class="fcard s6 v" data-key="habibs1" data-film="media/ia/habibs-figurinhas.webm">
+      <video data-src="media/ia/loop-habibs-figurinhas.webm" muted loop playsinline preload="none"></video>
+      <span class="tint"></span>
+      <div class="grad"></div><span class="live">Playing</span><span class="hint">Hover</span>
+      <div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      <div class="cap"><h3>Habib’s<br>Figurinhas</h3><div class="yr">2026<br>AI Filmmaking<br>9:16</div></div>
+    </article>
+    <article style="--tint:#e01b24" class="fcard s6 v" data-key="habibs2" data-film="media/ia/habibs-superticao.webm">
+      <video data-src="media/ia/loop-habibs-superticao.webm" muted loop playsinline preload="none"></video>
+      <span class="tint"></span>
+      <div class="grad"></div><span class="live">Playing</span><span class="hint">Hover</span>
+      <div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      <div class="cap"><h3>Habib’s<br>Superstição</h3><div class="yr">2026<br>AI Filmmaking<br>9:16</div></div>
+    </article>
+  </div>
+</section>
+
+
+
+<section id="contact">
+  <div class="bgv"><video data-src="media/home/loop-volvo.webm" muted loop playsinline preload="none"></video></div>
+  <div class="in">
+    <div class="tag rv" style="margin-bottom:18px">Contact</div>
+    <h2 class="display d-lg rv">Let’s build<br>the next<br><span class="inv">impossible</span> image.</h2>
+    <a class="mailto rv" href="mailto:pj.nascimento.2013@hotmail.com">pj.nascimento.2013@hotmail.com</a>
+  </div>
+  <div class="clinks">
+    <a href="https://wa.me/5516988087556" target="_blank" rel="noopener"><small>WhatsApp</small><strong>+55 16 98808-7556</strong></a>
+    <a href="https://www.behance.net/pjarts" target="_blank" rel="noopener"><small>Behance</small><strong>behance.net/pjarts</strong></a>
+    <a href="https://vimeo.com/1061099584" target="_blank" rel="noopener"><small>Showreel</small><strong>vimeo.com/1061099584</strong></a>
+    <a href="https://instagram.com/pjartsbrazil" target="_blank" rel="noopener"><small>Instagram</small><strong>@pjartsbrazil</strong></a>
+  </div>
+  <footer><img src="media/logo.png" alt="PJ ARTS"><span>CGI · AI Filmmaking · VFX · Web 3D</span><span>© 2026 · Brazil · Worldwide</span></footer>
+</section>
+
+<div id="lb" role="dialog" aria-modal="true">
+  <div class="bar"><h4 id="lbTitle">—</h4>
+    <button class="x" id="lbX" aria-label="Close"><svg viewBox="0 0 24 24"><path d="M19 6.4L17.6 5 12 10.6 6.4 5 5 6.4 10.6 12 5 17.6 6.4 19 12 13.4 17.6 19 19 17.6 13.4 12z"/></svg></button>
+  </div>
+  <div class="body">
+    <div class="player"><video id="lbV" controls playsinline></video></div>
+    <div class="txt">
+      <div><div id="lbDesc"></div><div class="chips" id="lbChips"></div></div>
+      <div class="cr" id="lbCr"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+
+/* ---- banner de prêmios: acende conforme o scroll ---- */
+(function(){
+  const band=document.getElementById('awband'),img=document.getElementById('awimg');
+  if(!band||!img)return;
+  let raf=false;
+  function draw(){
+    raf=false;
+    const r=band.getBoundingClientRect(),vh=innerHeight;
+    /* p = 0 quando o topo entra na tela, 1 quando o bloco está centralizado */
+    let p=(vh - r.top) / (vh*0.55 + r.height*0.35);
+    p=Math.max(0,Math.min(1,p));
+    const e=p*p*(3-2*p);                       // suaviza
+    img.style.filter='brightness('+e.toFixed(3)+') saturate('+e.toFixed(3)+')';
+    img.style.transform='scale('+(1.06-.06*e).toFixed(4)+')';
+    band.classList.toggle('lit',e>.6);
+  }
+  addEventListener('scroll',()=>{if(!raf){raf=true;requestAnimationFrame(draw)}},{passive:true});
+  addEventListener('resize',draw);addEventListener('load',draw);draw();
+})();
+
+const DATA={
+  ironmike:{title:'Iron Mike — Legacy',desc:['Generative AI film built on a hybrid AI + CGI pipeline.'],
+    chips:['AI Filmmaking','16:9','2026'],credits:[['Project','Iron Mike Legacy'],['Discipline','AI direction · Finishing']]},
+  bionicos:{title:'Netflix — Biônicos',desc:['VFX and finishing for the official trailer of Netflix Brazil’s “Biônicos”.'],
+    chips:['VFX','Trailer','2024'],credits:[['Client','Netflix Brasil'],['Discipline','VFX · Compositing · Finishing']]},
+  habibs1:{title:'Habib’s — Figurinhas · Gênio da Rodada',desc:['Generative AI film for the Habib’s Copa 2026 campaign, built on a hybrid AI + CGI pipeline and delivered in 9:16 for social.'],
+    chips:['AI Filmmaking','9:16','2026'],credits:[['Client','Habib’s'],['Agency','Angry Duo'],['Production','Ilha Crossmídia'],['Campaign','Gênio da Rodada · Copa 2026'],['Discipline','AI direction · Finishing']]},
+  habibs2:{title:'Habib’s — Superstição · Gênio da Rodada',desc:['Second film of the Habib’s Copa 2026 campaign — generative AI production with CGI finishing, vertical format.'],
+    chips:['AI Filmmaking','9:16','2026'],credits:[['Client','Habib’s'],['Agency','Angry Duo'],['Production','Ilha Crossmídia'],['Campaign','Gênio da Rodada · Copa 2026'],['Discipline','AI direction · Finishing']]},
+  gtx:{title:'GTX Sports — Experience',desc:['Real-time 3D configurator for interactive apparel customization, delivered as a responsive web application.'],
+    chips:['Web 3D','Configurator','Three.js','2024'],credits:[['Client','GTX Sports'],['Discipline','Real-time 3D · Web app']]},
+  shutz:{title:'Schutz',desc:['Vertical CGI piece for social formats — product build, look development and finishing.'],
+    chips:['CGI','Fashion','9:16','2024'],credits:[['Client','Schutz'],['Discipline','CGI · Look development']]},
+  maxxi:{title:'Fila — Float Maxxi 2 Pro',desc:['Product film for the Float Maxxi 2 Pro running line — CGI build, look development and lighting.'],
+    chips:['CGI','Product film','2024'],credits:[['Client','FILA Brazil'],['Discipline','CGI · Look development · Lighting']]},
+  kr6:{title:'Fila Brazil — KR6',
+    desc:['The sixth edition of the KR line was developed to be the lightest and fastest running shoe in Fila’s line.',
+          'The film highlights the innovative Skin Tech technology — an ultra-breathable upper that adapts to the athlete’s foot — and an enhanced midsole for improved running performance.'],
+    chips:['CGI','Product film','Look development','Lighting','2024'],
+    credits:[['Client','FILA Brazil'],['Production','Studio Cosmo'],
+      ['Creative Direction','Ally Fukumoto, André Porto Alegre'],['Executive Producer','Francine Steiner'],
+      ['Contact','Kauany Cheren'],['Storyboard','Ane Caribelli'],
+      ['CGI Supervision','Miguel Sacomano, André Gallego'],
+      ['3D Artists','Pablo Oliveira, Caio Laundos, Thiago Meteles, Matheus Domingues, João Paulo Oliveira, João Vitor Ferreira, André Gallego, Miguel Sacomano'],
+      ['Composition','Mateus Perpétuo, André Gallego'],['Still’s Composition','Vinícius Goulart'],['Sound','NaPilha']]},
+  verve:{title:'Fila Brazil — Float Verve',desc:['Product film for the Float Verve running line — CGI build, look development and lighting.'],
+    chips:['CGI','Product film','2023'],credits:[['Client','FILA Brazil'],['Discipline','CGI · Look development · Lighting']]},
+  williams:{title:'Williams Racing — Gulf × Atlassian',desc:['Motorsport CGI piece built around the Williams Racing livery for the Gulf × Atlassian activation.'],
+    chips:['CGI','Motorsport','2025'],credits:[['Client','Williams Racing'],['Discipline','CGI · Animation · Lighting']]},
+  herbissimo:{title:'Herbíssimo',desc:['Commercial CGI production — product build, look development and finishing.'],
+    chips:['CGI','Commercial','2024'],credits:[['Discipline','CGI · Look development · Compositing']]},
+  netflix:{title:'Netflix — Body Swap',desc:['“It’s What’s Inside” — a campaign by AKQA blending live action, 3D and psychological tension, turning the film’s body-swapping premise into a live AI-driven game.','Clio Awards Grand Prix 2025 and 2× Bronze at Cannes Lions.'],chips:['VFX','AI','Interactive','2025'],credits:[['Client','Netflix'],['Agency','AKQA'],['Craft','Model & Texture — Pablo Oliveira']]},
+  penalty:{title:'Penalty — Brasil 70 Pro',desc:['Vertical CGI product film for the Brasil 70 Pro boot, cut for social formats.'],chips:['CGI','Product film','9:16','2026'],credits:[['Client','Penalty']]},
+  sony:{title:'Sony Lidar',desc:['Technical CGI visualization for Sony Lidar sensing technology.'],chips:['CGI','Tech'],credits:[['Client','Sony']]},
+  disney:{title:'GK × Disney',desc:['CGI campaign film for the GK × Disney collaboration.'],chips:['CGI','Campaign'],credits:[['Client','GK · Disney']]},
+  avon:{title:'Avon',desc:['AI filmmaking piece combining generative video with CGI finishing.'],chips:['AI Filmmaking'],credits:[['Client','Avon']]},
+  bateubet:{title:'Bateu Bet',desc:['Hybrid AI + CGI commercial.'],chips:['AI','Commercial'],credits:[['Client','Bateu Bet']]},
+  alliage:{title:'Alliage Prestige',desc:['CGI product film — equipment visualization and finishing.'],chips:['CGI','Product'],credits:[['Client','Alliage']]},
+  volvo:{title:'Volvo × Grupo Tracbel',desc:['Interactive 3D product presentation running in real-time WebGL, with creative direction and the full 3D experience.'],
+    chips:['Web 3D','WebGL','Real-time'],credits:[['Client','Volvo · Grupo Tracbel'],['Discipline','Web 3D · Creative direction']]},
+  gtx:{title:'GTX Sports',desc:['Real-time 3D configurator for interactive apparel customization, delivered as a responsive web application.'],
+    chips:['Web 3D','Configurator','Three.js'],credits:[['Client','GTX Sports'],['Discipline','Real-time 3D · Web app']]}
+};
+
+document.getElementById('mq').innerHTML=
+  ['Netflix','Volvo','Grupo Tracbel','Williams Racing','NBA','Fila','Vince Camuto Fragrances','Kolosh','Penalty']
+  .map(b=>`<span>${b}</span>`).join('').repeat(2);
+
+/* ---- abertura: logo aparece em fade, some, e a reel começa ---- */
+(function(){
+  const pre=document.getElementById('pre'),hv=document.getElementById('heroV');
+  hv.pause();
+  requestAnimationFrame(()=>pre.classList.add('show'));
+  let closed=false;
+  function finish(){
+    if(closed)return;closed=true;
+    pre.classList.add('out');                 // logo some em fade
+    setTimeout(()=>{
+      pre.classList.add('gone');              // cortina some
+      hv.play().catch(()=>{});                // reel começa
+    },900);
+  }
+  const ready=()=>setTimeout(finish,1400);    // segura o logo 1,4s
+  if(hv.readyState>=2)ready();
+  else{['canplay','loadeddata','error'].forEach(ev=>hv.addEventListener(ev,ready,{once:true}))}
+  setTimeout(finish,4000);                    // rede lenta: não trava a página
+})();
+
+/* ---- vídeos: só a reel toca sozinha; os cards tocam no hover ---- */
+const cardVids=[...document.querySelectorAll('.fcard video[data-src], .tile video[data-src]')];
+function load(v){
+  if(v.src)return;
+  v.src=v.dataset.src;v.load();
+  if(v.dataset.alt&&!v.dataset.tried){
+    v.addEventListener('error',function(){
+      if(v.dataset.tried)return;v.dataset.tried='1';
+      v.src=v.dataset.alt;v.load();v.play().catch(function(){});
+    },{once:true});
+  }
+}
+cardVids.forEach(v=>{
+  const card=v.closest('.fcard,.tile');
+  card.addEventListener('mouseenter',()=>{load(v);v.play().catch(()=>{})});
+  card.addEventListener('mouseleave',()=>{v.pause()});
+  /* pré-carrega o 1º frame quando entra na tela, sem tocar */
+  new IntersectionObserver((es,o)=>es.forEach(e=>{if(e.isIntersecting){
+    v.preload='metadata';load(v);o.unobserve(e.target)}}),{rootMargin:'250px'}).observe(card);
+});
+/* toque: toca o card centralizado */
+if(matchMedia('(hover:none)').matches){
+  new IntersectionObserver(es=>es.forEach(e=>{
+    const v=e.target.querySelector('video[data-src]');if(!v)return;
+    if(e.isIntersecting){load(v);v.play().catch(()=>{})}else v.pause();
+  }),{threshold:.6}).forEach;
+  document.querySelectorAll('.fcard,.tile').forEach(c=>{
+    new IntersectionObserver(es=>es.forEach(e=>{
+      const v=e.target.querySelector('video[data-src]');if(!v)return;
+      if(e.isIntersecting){load(v);v.play().catch(()=>{})}else v.pause();
+    }),{threshold:.6}).observe(c)});
+}
+/* fundos leves (contato / public sector) */
+document.querySelectorAll('.bgv video[data-src], .split .vid video[data-src]').forEach(v=>{
+  new IntersectionObserver(es=>es.forEach(e=>{
+    if(e.isIntersecting){load(v);v.play().catch(()=>{})}else v.pause()}),{threshold:.2})
+    .observe(v.closest('div'))});
+
+const hdr=document.getElementById('top');
+addEventListener('scroll',()=>hdr.classList.toggle('solid',scrollY>50),{passive:true});
+document.getElementById('burger').addEventListener('click',()=>document.body.classList.toggle('menu'));
+document.querySelectorAll('#menu a.big').forEach((a,i)=>{a.style.transitionDelay=(i*55)+'ms';
+  a.addEventListener('click',()=>document.body.classList.remove('menu'))});
+
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;
+  const p=e.target.parentElement,s=p?[...p.children].filter(c=>c.classList.contains('rv')):[];
+  e.target.style.transitionDelay=Math.min(Math.max(0,s.indexOf(e.target))*70,420)+'ms';
+  e.target.classList.add('in');io.unobserve(e.target)}),{threshold:.12,rootMargin:'0px 0px -6% 0px'});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+
+const heroV=document.getElementById('heroV'),mute=document.getElementById('mute'),
+      icMute=document.getElementById('icMute'),pause=document.getElementById('pause');
+const ON='M4 9v6h4l5 5V4L8 9H4zm13.5 3a4.5 4.5 0 00-2.5-4v8a4.5 4.5 0 002.5-4z';
+const OFF='M4 9v6h4l5 5V4L8 9H4zm15.5 3a4.5 4.5 0 00-2.5-4v8a4.5 4.5 0 002.5-4zM3 3l18 18-1.4 1.4L1.6 4.4 3 3z';
+mute.addEventListener('click',()=>{heroV.muted=!heroV.muted;heroV.volume=.7;
+  icMute.querySelector('path').setAttribute('d',heroV.muted?OFF:ON);heroV.play().catch(()=>{})});
+pause.addEventListener('click',()=>{const p=pause.querySelector('path');
+  if(heroV.paused){heroV.play();p.setAttribute('d','M7 5h4v14H7zM13 5h4v14h-4z')}
+  else{heroV.pause();p.setAttribute('d','M8 5v14l11-7z')}});
+
+/* lightbox */
+const lb=document.getElementById('lb'),lbV=document.getElementById('lbV'),lbT=document.getElementById('lbTitle'),
+      lbD=document.getElementById('lbDesc'),lbC=document.getElementById('lbCr'),lbCh=document.getElementById('lbChips');
+let wasPlaying=false;
+function openLB(src,key){
+  const d=DATA[key]||{};
+  lbT.textContent=d.title||'';
+  lbD.innerHTML=(d.desc||[]).map(t=>`<p>${t}</p>`).join('');
+  lbCh.innerHTML=(d.chips||[]).map(c=>`<i>${c}</i>`).join('');
+  lbC.innerHTML=(d.credits||[]).map(([k,v])=>`<div><b>${k}</b><span>${v}</span></div>`).join('');
+  wasPlaying=!heroV.paused;heroV.pause();
+  const webm=src.replace('.mp4','.webm');
+  lbV.dataset.alt=src;lbV.dataset.tried='';
+  lbV.src=webm;lbV.muted=false;lb.classList.add('on');document.body.classList.add('lock');
+  lbV.play().catch(()=>{lbV.muted=true;lbV.play().catch(()=>{})});
+  lbV.onloadedmetadata=()=>{lbV.parentElement.classList.toggle('vert',lbV.videoHeight>lbV.videoWidth)};
+}
+function closeLB(){lb.classList.remove('on');document.body.classList.remove('lock');
+  lbV.pause();if(wasPlaying)heroV.play().catch(()=>{})}
+document.getElementById('lbX').addEventListener('click',closeLB);
+lb.addEventListener('click',e=>{if(e.target===lb)closeLB()});
+addEventListener('keydown',e=>{if(e.key==='Escape'&&lb.classList.contains('on'))closeLB()});
+document.querySelectorAll('[data-film]').forEach(el=>
+  el.addEventListener('click',()=>openLB(el.dataset.film,el.dataset.key)));
+
+/* peeks */
+document.querySelectorAll('.row').forEach(r=>{const v=r.querySelector('.peek video');if(!v)return;
+  r.addEventListener('mouseenter',()=>{v.currentTime=0;v.play().catch(()=>{})});
+  r.addEventListener('mouseleave',()=>v.pause())});
+
+/* counters */
+const co=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;
+  const el=e.target,tg=+el.dataset.count,suf=el.dataset.suffix||'',t0=performance.now(),d=1500;
+  (function s(t){const p=Math.min(1,(t-t0)/d),ea=1-Math.pow(1-p,4);
+    el.textContent=Math.round(tg*ea)+suf;if(p<1)requestAnimationFrame(s)})(t0);co.unobserve(el)}),{threshold:.5});
+document.querySelectorAll('[data-count]').forEach(el=>co.observe(el));
+</script>
+
+
+
+</body>
+</html>
